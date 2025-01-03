@@ -4,6 +4,21 @@ const FollowMouse=()=>{
   const [enabled, setEnabled] = useState(false)
   const[position, setPosition] = useState({x:0, y:0})
  
+ // [] -> se ejecuta cuando se monta el componente
+ // [enabled, ...] -> sejecuta cuando cambia de estado enabled y cuando se  monta el componente
+ // undefined -> se ejecuta cada vez que se renderice el componente.
+
+  useEffect(()=>{
+    document.body.classList.toggle('no-cursor', enabled)
+    return () => {
+      document.body.classList.remove('no-cursor')
+    }
+  },[enabled])
+
+  useEffect(()=>{
+
+  },[enabled])
+
   useEffect(() => {
      console.log('Me monto',{enabled})
      const handleMove = (event) => {
